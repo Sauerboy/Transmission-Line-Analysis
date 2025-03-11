@@ -1,0 +1,11 @@
+f=0:1e2:200e6;
+z01=300;
+zL=73;
+z02=sqrt(z01*zL);
+e_r=2.56;
+V_p=physconst('LightSpeed')/sqrt(e_r);
+zin=z02*((zL+j*z02*tan(2*pi*f*.468/V_p))./(z02+j*zL*tan(2*pi*f*.468/V_p)));
+gamma=(zin-z01*ones(1, length(f)))./(zin+z01*ones(1,length(f)));
+plot(f/1e6, abs(gamma));
+xlabel('Frequency(MHz)');
+ylabel('|Gamma|');
